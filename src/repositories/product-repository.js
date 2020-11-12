@@ -5,7 +5,7 @@ exports.get = async() => {
     const res = await Product.find({
         active: true
     }, 'title price  description customer image category ')
-     .populate('customer', 'name');
+    //  .populate('customer', 'name');
     return res;
 }
 
@@ -25,6 +25,15 @@ exports.getById = async (id) =>{
      return res;
  }
 
+ exports.getByIdCustomer = async (customers) =>{
+    const res = await Product
+    .find({
+        customer: customers,
+        active: true
+    }, 'title description price category');
+    return res;
+ }
+ 
  exports.getByTag = async (tag) =>{
     const res = await Product
     .find({

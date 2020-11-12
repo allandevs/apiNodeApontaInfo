@@ -42,7 +42,6 @@ exports.getById = async (req, res, next) => {
 
 }
 
-
 exports.getByTag = async (req, res, next) => {
     try {
         const data = await repository.getByTag(req.params.tag)
@@ -54,6 +53,20 @@ exports.getByTag = async (req, res, next) => {
         });
     }
 }
+
+
+exports.getByIdCustomer = async (req, res, next) => {
+    try {
+        var data = await repository.getByIdCustomer(req.params.customers)
+        res.status(200).send(data);
+    } catch (e) {
+        res.status(500).send({
+            message: 'Falha ao processar sua requisição'
+        });
+    }
+
+}
+
 
 exports.getByCategoria = async (req, res, next) => {
     try {
@@ -98,7 +111,7 @@ exports.post = async (req, res, next) => {
         // });
 
     await repository.create({
-        //    customers: customers,
+           customer: req.body.customer,
            category: req.body.category,
             title: req.body.title,
             // slug: req.body.slug,

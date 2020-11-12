@@ -7,6 +7,7 @@ const authService = require('../services/auth-service');
 //  router.get('/:slug', controller.getBySlug);
  router.get('/admin/:id', controller.getById);
  router.get('/category/:categoria', controller.getByCategoria);
+ router.get('/customer/:customers', controller.getByIdCustomer);
  router.get('/tags/:tag', controller.getByTag);
  router.post('/', controller.post);
 //  router.post('/', authService.authorize, controller.post);
