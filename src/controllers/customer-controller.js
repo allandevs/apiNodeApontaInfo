@@ -92,6 +92,14 @@ exports.post = async(req, res, next) => {
                 data: {
                     email: customer.email,
                     name: customer.name,
+                    nameFantasia: customer.nameFantasia,
+                    cnpj: customer.cnpj,
+                    endereco: customer.endereco,
+                    complemento:customer.complemento,
+                    bairro: customer.bairro,
+                    cidade: customer.cidade,
+                    estado: customer.estado,
+                    cep: customer.cep,
                     id: customer.id,
                 }
             });

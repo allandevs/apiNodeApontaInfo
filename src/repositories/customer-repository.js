@@ -4,7 +4,7 @@ const Customer = mongoose.model('Customer');
 
 exports.get = async() => {
     const res = await Customer.find({
-    }, 'name nameFantasia cnpj endereco complemento bairro cidade estado cep telefone email  ');
+    }, 'name nameFantasia cnpj endereco complemento bairro cidade estado cep telefone email');
     return res;
     
 }
