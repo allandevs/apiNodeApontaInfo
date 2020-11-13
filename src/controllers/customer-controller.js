@@ -44,6 +44,7 @@ exports.post = async(req, res, next) => {
             cidade: req.body.cidade,
             estado: req.body.estado,
             cep: req.body.cep,
+            telefone:req.body.telefone,
             email: req.body.email,
             password: md5(req.body.password + global.SALT_KEY)
         })
