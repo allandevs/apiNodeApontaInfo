@@ -81,14 +81,17 @@ exports.post = async(req, res, next) => {
     
           const token = await authService.generateToken({
                 email: customer.email,
-                name: customer.name
+                name: customer.name,
+                
+
             })
     
             res.status(201).send({
                 token: token,
                 data: {
                     email: customer.email,
-                    name: customer.name
+                    name: customer.name,
+                    id: customer.id,
                 }
             });
             
