@@ -5,7 +5,8 @@ router.get('/', (req, res, next) => {
     res.status(200).send({
         title: "Aponta info Api",
         version: "1.0.0",
-        developer: "Allan Oliveira"
+        developer: "Allan Oliveira",
+        projetoFinal : "Unisuam"
     });
 }); 
 
