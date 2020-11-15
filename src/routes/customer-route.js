@@ -6,6 +6,7 @@ const controller = require('../controllers/customer-controller');
 
 router.post('/', controller.post);
 router.get('/', controller.get);
+router.get('/:id', controller.getById);
 router.post('/authenticate', controller.authenticate);
 // router.post('/refresh-token', authService.authorize, controller.refreshToken);
 

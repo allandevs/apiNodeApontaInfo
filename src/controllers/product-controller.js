@@ -92,14 +92,16 @@ exports.post = async (req, res, next) => {
     }
    
     try {
-       // Cria o Blob Service
+    //    Cria o Blob Service
         const blobSvc = azure.createBlobService(config.containerConnectionString);
 
         let filename = guid.raw().toString() + '.jpg';
         let rawdata = req.body.image;
         let matches = rawdata.match(/^data:([A-Za-z-+\/]+);base64,(.+)$/);
-        let type = matches[1];
-        let buffer = new Buffer(matches[2], 'base64');
+        if(matches ){
+        var type = matches[1];
+        var buffer = new Buffer(matches[2], 'base64');
+        }
 
         // Salva a imagem
         await blobSvc.createBlockBlobFromText('product-images', filename, buffer, {
@@ -114,11 +116,9 @@ exports.post = async (req, res, next) => {
            customer: req.body.customer,
            category: req.body.category,
             title: req.body.title,
-            // slug: req.body.slug,
             description: req.body.description,
             price: req.body.price,
             active: true,
-            // tags: req.body.tags,
             image: 'https://apontainfo.blob.core.windows.net/product-images/' + filename
     })
         res.status(201).send({
