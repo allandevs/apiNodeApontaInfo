@@ -12,6 +12,7 @@ const authService = require('../services/auth-service');
  router.post('/', controller.post);
 //  router.post('/', authService.authorize, controller.post);
  router.put('/:id', controller.put);
+ router.put('/status/:id', controller.putStatus);
  router.delete('/:id', controller.delete);
 // router.post('/', authService.isAdmin, controller.post);
 // router.put('/:id', authService.isAdmin, controller.put);

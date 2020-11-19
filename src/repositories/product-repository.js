@@ -29,8 +29,8 @@ exports.getById = async (id) =>{
     const res = await Product
     .find({
         customer: customers,
-        active: true
-    }, 'title description price category image');
+        // active: true
+    }, 'title description price category image active');
     return res;
  }
  
@@ -70,6 +70,16 @@ exports.getById = async (id) =>{
         }
     })
  }
+ exports.updateStatus =  async (id, data) =>{
+    await Product
+     .findByIdAndUpdate(id, {
+         $set: {
+             active:data.active
+             // slug: data.slug
+ 
+         }
+     })
+  }
 
  exports.delete = async (id) => {
      await Product

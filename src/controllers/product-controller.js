@@ -135,6 +135,21 @@ exports.post = async (req, res, next) => {
 }
 
 
+exports.putStatus = async (req, res, next) => {
+    try {
+
+        await repository.updateStatus(req.params.id, req.body)
+        res.status(200).send({
+            message: 'Produto atualizado com sucesso!'
+        });
+    } catch (e) {
+        res.status(500).send({
+            message: 'Falha ao processar sua requisição'
+        });
+    }
+
+}
+
 
 exports.put = async (req, res, next) => {
     try {
