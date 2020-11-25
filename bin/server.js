@@ -12,7 +12,7 @@ const server = http.createServer(app);
 server.listen(port);
 server.on('error', onError);
 server.on('listening', onListening);
-console.log('Api rodando na porta ' + port);
+console.log('Api esta rodando na porta ' + port);
 
 function normalizePort(val) {
 
