@@ -53,6 +53,21 @@ const schema = new Schema({
         required: true
     },
 
+    tipo: {
+        type: String,
+        required: true,
+        default: "1"
+    },
+    plano: {
+        type: String,
+        required: true,
+        default: "Free"
+    },
+    active: {
+        type: Boolean,
+        required: true,
+        default: true
+    },
 });
 
 module.exports = mongoose.model('Customer', schema);

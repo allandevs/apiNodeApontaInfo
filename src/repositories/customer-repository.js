@@ -4,11 +4,27 @@ const Customer = mongoose.model('Customer');
 
 exports.get = async() => {
     const res = await Customer.find({
-    }, 'name nameFantasia cnpj endereco complemento bairro cidade estado cep telefone email');
+        tipo: '1'
+    }, 'name nameFantasia cnpj endereco complemento bairro cidade estado cep telefone email active tipo plano');
     return res;
     
 }
 
+exports.getUsuarioInativo = async() => {
+    const res = await Customer.find({
+        active: false
+    }, 'name nameFantasia cnpj endereco complemento bairro cidade estado cep telefone email active tipo plano');
+    return res;
+    
+}
+
+exports.getUsuarioAtivo = async() => {
+    const res = await Customer.find({
+        active: true
+    }, 'name nameFantasia cnpj endereco complemento bairro cidade estado cep telefone email active tipo plano');
+    return res;
+    
+}
 exports.getById = async (id) =>{
     const res = await Customer
       .findById(id)
@@ -30,3 +46,13 @@ exports.create = async(data) => {
     await customer.save();
 }
 
+exports.updateStatus =  async (id, data) =>{
+    await Customer
+     .findByIdAndUpdate(id, {
+         $set: {
+             active:data.active
+             // slug: data.slug
+ 
+         }
+     })
+  }

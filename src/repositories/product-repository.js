@@ -30,7 +30,7 @@ exports.getById = async (id) =>{
     .find({
         customer: customers,
         // active: true
-    }, 'title description price category image active');
+    }, 'title description price category image active plano');
     return res;
  }
  

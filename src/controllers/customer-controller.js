@@ -19,6 +19,28 @@ exports.get = async (req, res, next) => {
     }
 }
 
+exports.getUsuarioInativo = async (req, res, next) => {
+    try {
+        var data = await repository.getUsuarioInativo();
+        res.status(200).send(data);
+    } catch (e) {
+        res.status(500).send({
+            message: 'Falha ao processar sua requisição'
+        });
+    }
+}
+
+exports.getUsuarioAtivo = async (req, res, next) => {
+    try {
+        var data = await repository.getUsuarioAtivo();
+        res.status(200).send(data);
+    } catch (e) {
+        res.status(500).send({
+            message: 'Falha ao processar sua requisição'
+        });
+    }
+}
+
 exports.getById = async (req, res, next) => {
     try {
         var data = await repository.getById(req.params.id)
@@ -31,6 +53,20 @@ exports.getById = async (req, res, next) => {
 
 }
 
+exports.putStatus = async (req, res, next) => {
+    try {
+
+        await repository.updateStatus(req.params.id, req.body)
+        res.status(200).send({
+            message: 'Cliente atualizado com sucesso!'
+        });
+    } catch (e) {
+        res.status(500).send({
+            message: 'Falha ao processar sua requisição'
+        });
+    }
+
+}
 
 exports.post = async(req, res, next) => {
     let contract = new ValidationContract();
@@ -58,7 +94,10 @@ exports.post = async(req, res, next) => {
             cep: req.body.cep,
             telefone:req.body.telefone,
             email: req.body.email,
-            password: md5(req.body.password + global.SALT_KEY)
+            password: md5(req.body.password + global.SALT_KEY),
+            active: true,
+            tipo: '1',
+            plano:'Free'
         })
 
         // emailService.send(req.body.email,'Bem vindo ao Aponta Info', global.EMAIL_TMPL.replace('{0}', req.body.name))
@@ -114,6 +153,9 @@ exports.post = async(req, res, next) => {
                     cep: customer.cep,
                     telefone: customer.telefone,
                     id: customer.id,
+                    tipo: customer.tipo,
+                    active: customer.active,
+                    plano: customer.plano
                 }
             });
             
