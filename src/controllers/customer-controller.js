@@ -87,6 +87,7 @@ exports.post = async(req, res, next) => {
             nameFantasia: req.body.nameFantasia,
             cnpj: req.body.cnpj,
             endereco: req.body.endereco,
+            numero: req.body.numero,
             complemento: req.body.complemento,
             bairro: req.body.bairro,
             cidade: req.body.cidade,
@@ -97,7 +98,7 @@ exports.post = async(req, res, next) => {
             password: md5(req.body.password + global.SALT_KEY),
             active: true,
             tipo: '1',
-            plano:'Free'
+            plano:'free'
         })
 
         // emailService.send(req.body.email,'Bem vindo ao Aponta Info', global.EMAIL_TMPL.replace('{0}', req.body.name))
@@ -146,6 +147,7 @@ exports.post = async(req, res, next) => {
                     nameFantasia: customer.nameFantasia,
                     cnpj: customer.cnpj,
                     endereco: customer.endereco,
+                    numero: customer.numero,
                     complemento:customer.complemento,
                     bairro: customer.bairro,
                     cidade: customer.cidade,

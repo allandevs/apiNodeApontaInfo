@@ -9,6 +9,7 @@ const authService = require('../services/auth-service');
  router.get('/category/:categoria', controller.getByCategoria);
  router.get('/customer/:customers', controller.getByIdCustomer);
  router.get('/tags/:tag', controller.getByTag);
+ router.get('/description/:desc', controller.getByDesc);
  router.post('/', controller.post);
 //  router.post('/', authService.authorize, controller.post);
  router.put('/:id', controller.put);

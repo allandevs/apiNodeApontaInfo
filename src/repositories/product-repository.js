@@ -43,13 +43,22 @@ exports.getById = async (id) =>{
     return res;
  }
  
+ exports.getByDesc = async (title) =>{
+    const res = await Product
+    .find({
+        title: title,
+        active: true
+    }, 'title description price tags image');
+    return res;
+ }
+
  exports.getByCategoria = async (categoria) =>{
     const res = await Product
     .find({
         category: categoria,
         active: true
     }, 'title price  description customer image category')
-    .populate('customer name nameFantasia cep cidade estado endereco telefone');
+    .populate('customer name nameFantasia cep cidade estado endereco numero telefone ');
     return res;
  }
  exports.create = async (data) => {

@@ -55,6 +55,7 @@ exports.getByTag = async (req, res, next) => {
 }
 
 
+
 exports.getByIdCustomer = async (req, res, next) => {
     try {
         var data = await repository.getByIdCustomer(req.params.customers)
@@ -79,6 +80,19 @@ exports.getByCategoria = async (req, res, next) => {
         });
     }
 }
+
+exports.getByDesc = async (req, res, next) => {
+    try {
+        const data = await repository.getByDesc(req.params.title)
+        res.status(200).send(data);
+
+    } catch (e) {
+        res.status(500).send({
+            message: 'Falha ao processar sua requisição'
+        });
+    }
+}
+
 
 exports.post = async (req, res, next) => {
     let contract = new ValidationContract();

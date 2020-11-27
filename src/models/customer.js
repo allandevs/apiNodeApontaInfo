@@ -20,6 +20,11 @@ const schema = new Schema({
         type: String,
         required: true
     },
+    
+    numero: {
+        type: String,
+        required: true
+    },
     complemento: {
         type: String,
         required:false
