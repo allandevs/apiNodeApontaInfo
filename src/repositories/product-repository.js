@@ -5,7 +5,7 @@ exports.get = async() => {
     const res = await Product.find({
         active: true
     }, 'title price  description customer image category ')
-     .populate('customer', 'name');
+     .populate('customer', 'name plano nameFantasia active'  );
     return res;
 }
 
@@ -59,6 +59,7 @@ exports.getById = async (id) =>{
         active: true
     }, 'title price  description customer image category')
     .populate('customer name nameFantasia cep cidade estado endereco numero telefone ');
+    
     return res;
  }
  exports.create = async (data) => {

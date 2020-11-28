@@ -46,6 +46,7 @@ exports.create = async(data) => {
     await customer.save();
 }
 
+
 exports.updateStatus =  async (id, data) =>{
     await Customer
      .findByIdAndUpdate(id, {
@@ -56,3 +57,18 @@ exports.updateStatus =  async (id, data) =>{
          }
      })
   }
+
+  exports.updatePlano =  async (id, data) =>{
+    await Customer
+     .findByIdAndUpdate(id, {
+         $set: {
+             plano:data.plano
+             // slug: data.slug
+ 
+         }
+     })
+  }
+  exports.delete = async (id) => {
+    await Customer
+    .findByIdAndDelete(id)
+}

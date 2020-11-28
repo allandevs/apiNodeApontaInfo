@@ -68,6 +68,20 @@ exports.putStatus = async (req, res, next) => {
 
 }
 
+exports.putPlano = async (req, res, next) => {
+    try {
+
+        await repository.updatePlano(req.params.id, req.body)
+        res.status(200).send({
+            message: 'Plano atualizado com sucesso!'
+        });
+    } catch (e) {
+        res.status(500).send({
+            message: 'Falha ao processar sua requisição'
+        });
+    }
+
+}
 exports.post = async(req, res, next) => {
     let contract = new ValidationContract();
     contract.hasMinLen(req.body.name, 3, 'O nome deve conter pelo menos 3 caracteres');
@@ -169,3 +183,17 @@ exports.post = async(req, res, next) => {
     
 }
 
+
+exports.delete = async (req, res, next) => {
+    await repository.delete(req.params.id)
+    try {
+        res.status(200).send({
+            message: 'Cliente excluido com sucesso!'
+        });
+    } catch (e) {
+        res.status(500).send({
+            message: 'Falha ao processar sua requisição'
+        });
+    }
+
+}
