@@ -84,7 +84,8 @@ exports.putPlano = async (req, res, next) => {
 }
 exports.post = async(req, res, next) => {
     let contract = new ValidationContract();
-    contract.hasMinLen(req.body.name, 3, 'O nome deve conter pelo menos 3 caracteres');
+    contract.hasMinLen(req.body.name, 20, 'O nome razão social deve conter pelo menos 23 caracteres');
+    contract.hasMinLen(req.body.nameFantasia, 5, 'O nome fantasia deve conter pelo menos 5 caracteres');
     contract.isEmail(req.body.email, 'E-mail inválido');
     contract.hasMinLen(req.body.password, 6, 'A senha deve conter pelo menos 6 caracteres');
 

@@ -96,9 +96,9 @@ exports.getByDesc = async (req, res, next) => {
 
 exports.post = async (req, res, next) => {
     let contract = new ValidationContract();
-    contract.hasMinLen(req.body.title, 3, 'O título deve conter pelo menos 3 caracteres');
+    contract.hasMinLen(req.body.title, 10, 'O título deve conter pelo menos 10 caracteres');
     // contract.hasMinLen(req.body.slug, 3, 'O slug deve conter pelo menos 3 caracteres');
-    contract.hasMinLen(req.body.description, 3, 'A descricao deve conter pelo menos 3 caracteres');
+    contract.hasMinLen(req.body.description, 40, 'A descricao deve conter pelo menos 40 caracteres');
     // Se os dados forem inválidos
     if (!contract.isValid()) {
         res.status(400).send(contract.errors()).end();
