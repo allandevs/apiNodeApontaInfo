@@ -20,6 +20,7 @@ exports.getUsuarioInativo = async() => {
 
 exports.getUsuarioAtivo = async() => {
     const res = await Customer.find({
+        tipo: '1',
         active: true
     }, 'name nameFantasia cnpj endereco complemento bairro cidade estado cep telefone email active tipo plano');
     return res;
